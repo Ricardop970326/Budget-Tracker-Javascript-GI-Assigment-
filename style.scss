@@ -1,0 +1,251 @@
+@import "https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap";
+
+$color_2: silver;
+$color_3: #494848;
+$color_4: rgb(136, 202, 2);
+$color_6: rgb(41, 40, 40);
+$color_7: white;
+$color_8: rgb(2, 150, 2);
+$color_9: rgb(174, 26, 26);
+$color_10: rgb(191, 8, 8);
+$color_11: rgb(18, 18, 215);
+$color_12: whitesmoke;
+$color_13: grey;
+$color_14: rgba(0, 0, 0, 0.1);
+$color_15: black;
+$font-family_1: helvetica, sans-serif;
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: $font-family_1;
+	background-color: $color_3;
+	color: $color_8;
+}
+
+
+#title{
+    width: auto;
+    background-color: $color_6;
+    color:$color_8 ;
+    text-align: center;
+  }  
+
+h1 {
+    	text-align: center;
+    	font-size: 1.5rem;
+    }
+    h3 {
+        display: flex;
+        justify-content: center;
+     
+        margin-top: 1rem;
+    	margin-bottom: 0.5rem;
+    }
+
+    header {
+        width: 100%;
+        	margin-bottom: 0.5rem;
+            box-shadow: 3px 3px 5px $color_14;
+        	background-color: $color_6;
+            border: solid $color_8;
+        	color: $color_8;
+        	padding: 1rem;
+        	text-align: center;
+        	border-radius: 12px ;
+        	display: flex;
+        	flex-wrap: wrap;
+    }
+
+    	div {
+		padding: 5px;
+		&:first-child {
+			flex-basis: 100%;
+			font-size: 2.25rem;
+			font-weight: 600;
+		}
+		&:nth-child(n+2) {
+            border-radius:12px;
+			flex-basis: 50%;
+			font-size: 1.25rem;
+			font-weight: 500;
+		}
+		h5 {
+			font-size: 0.75rem;
+			font-weight: 600;
+			text-transform: uppercase;
+		}
+	}
+
+ul {
+	margin-bottom: 0.5rem;
+	list-style-type: none;
+	li {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		padding: 5px 10px;
+		position: relative;
+		&:hover {
+			background: $color_6 ;
+            border-radius: 12px;
+            border:  solid $color_8;
+            box-shadow: 3px 3px 5px $color_14;
+			.action {
+				transform: scaleX(1);
+			}
+		}
+		.name {
+			flex: 1;
+			h4 {
+				font-size: 1rem;
+				font-weight: 600;
+				text-transform: capitalize;
+			}
+			p {
+				font-size: 0.8rem;
+				color: $color_8;
+			}
+		}
+		.amount {
+			font-weight: 600;
+		}
+		.amount.income {
+			color: $color_4;
+		}
+		.amount.expense {
+			color: $color_9;
+		}
+		.action {
+			position: absolute;
+			top: 0;
+			right: 0;
+			background-color:$color_6;
+			color: $color_2;
+			height: 100%;
+			width: 50px;
+			display: grid;
+			place-items: center;
+			transform: scaleX(0);
+			transform-origin: right;
+			transition: all 300ms;
+			svg {
+				width: 36px;
+				height: 36px;
+				cursor: pointer;
+			}
+		}
+	}
+}
+
+main {
+	max-width: 400px;
+	margin: 1rem auto;
+	padding: 1rem;  
+}
+form {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	input {
+		&:not(#type) {
+
+            text-decoration: none;
+			width: 100%;
+			padding: 10px;
+			border:none;
+            color: $color_8;
+            border-bottom: 2px solid $color_8;
+			margin-bottom: 5px;
+			height: 42px;
+            background-color: $color_3;
+			font-size: 1rem;
+		}
+	}
+	button {
+		width: 100%;
+		padding: 10px;
+		border: 1px solid  $color_8;
+		border-radius: 12px;
+		margin-bottom: 5px;
+		height: 42px;
+		font-family: $font-family_1;
+		font-size: 1rem;
+		background-color: $color_6;
+		color: $color_8;
+		font-size: 0.75rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		box-shadow:  3px 3px 5px $color_14;
+	}
+	label {
+		font-size: 0.75rem;
+		font-weight: 600;
+		text-transform: uppercase;
+	}
+	div {
+		&:nth-child(-n+2) {
+			flex-basis: 100%;
+          
+		}
+		&:nth-child(n+3) {
+			flex-basis: calc(50% - 5px);
+		}
+	}
+}
+
+input#type {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	position: absolute;
+    border: none;
+}
+.option {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
+	background: $color_6;
+	position: relative;
+	span {
+        color: $color_8;
+		width: 50%;
+		text-align: center;
+		cursor: pointer;
+		z-index: 2;
+	}
+	&::before {
+		content: "";
+		position: absolute;
+		top: 5px;
+		left: 0;
+     
+		background-color: $color_3;
+		height: calc(100% - 10px);
+		width: calc(50% - 10px);
+		transform: translateX(5px);
+		border-radius: inherit;
+		box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+		transition: all 200ms;
+	}
+}
+#type {
+	&:checked {
+		~ {
+			.option {
+				&::before {
+					left: 50%;
+				}
+			}
+		}
+	}
+}
+#status {
+	text-align: center;
+	margin-bottom: 0.5rem;
+}
