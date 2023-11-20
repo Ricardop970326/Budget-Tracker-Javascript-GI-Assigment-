@@ -13,9 +13,11 @@ class TransactionManager {
     ///Linking the deleteTransaction method.
     this.deleteTransaction = this.deleteTransaction.bind(this);
 
+    //start it with an empty array
+    this.transactions = [];
     // parse a  JSON string and turn it into a javascript object   ////note: parse  is a process that analize strings // Using it in javascript means parsing(coverting) a JSON(javascript object notation) into javascript object
     //retive the data from local storage  to an empty array
-    this.transactions = JSON.parse(localStorage.getItem("transactions")) || [];
+    // this.transactions = JSON.parse(localStorage.getItem("transactions")) || [];
 
     //event listener to the submit buttom
     this.form.addEventListener("submit", this.addTransaction.bind(this));
@@ -33,20 +35,21 @@ class TransactionManager {
     const incomeTotal = this.transactions
       .filter((trx) => trx.type === "income")
       .reduce((total, trx) => total + trx.amount, 0);
-
-      const expenseTotal = this.transactions
-
-            .filter((trx) => trx.type === "expense")
-            .reduce((total, trx) => total + trx.amount, 0);
+  
+    const expenseTotal = this.transactions
+      .filter((trx) => trx.type === "expense")
+      .reduce((total, trx) => total + trx.amount, 0);
 
     // alter the html value display in the screen with the submited data
-    const balanceTotal = incomeTotal - expenseTotal;
+   const balanceTotal = incomeTotal - expenseTotal;
 
-    this.balance.textContent = this.formatter.format(balanceTotal).substring(1);
-    this.expense.textContent = this.formatter.format(expenseTotal * -1)
-    this.income.textContent = this.formatter.format(incomeTotal);
+   // format toptal balance
+   const formattedBalance = this.formatter.format(balanceTotal);
 
-  }
+   this.balance.textContent = balanceTotal < 0 ? `-${formattedBalance.substring(1)}` : formattedBalance.substring(1);
+   this.expense.textContent = this.formatter.format(expenseTotal * -1);
+   this.income.textContent = this.formatter.format(incomeTotal);
+ }
 
   //method for creating the list of transaction from the javascript to the HTML
   renderList() {
