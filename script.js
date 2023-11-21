@@ -15,7 +15,9 @@ class TransactionManager {
 
     //start it with an empty array
     this.transactions = [];
-    // parse a  JSON string and turn it into a javascript object   ////note: parse  is a process that analize strings // Using it in javascript means parsing(coverting) a JSON(javascript object notation) into javascript object
+    // parse a JSON string and turn it into a javascript object   
+    //note: parse  is a process that analize strings 
+    // Using it in javascript means parsing(coverting) a JSON(javascript object notation) into javascript object
     //retive the data from local storage  to an empty array
     // this.transactions = JSON.parse(localStorage.getItem("transactions")) || [];
 
@@ -130,7 +132,7 @@ class TransactionManager {
   saveTransactions() {
     // Order elements by date 
     this.transactions.sort((a, b) => new Date(b.date) - new Date(a.date));
-    localStorage.setItem("transactions", JSON.stringify(this.transactions));//Save the sorted array
+    // localStorage.setItem("transactions", JSON.stringify(this.transactions));//Save the sorted array
   }
 
   // start the UI with the current transaction
